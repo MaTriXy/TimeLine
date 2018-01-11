@@ -1,7 +1,6 @@
 package com.vivian.timeline.timeline2;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.vivian.timeline.R;
-import com.vivian.timeline.util.Util;
+import com.vivian.timelineitemdecoration.util.Util;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ import java.util.List;
  * Created by vivian on 2017/6/9.
  */
 
-public class TimeLineAdapter2 extends RecyclerView.Adapter<TimeLineAdapter2.ViewHolder> {
+public class DotTimeLineAdapter extends RecyclerView.Adapter<DotTimeLineAdapter.ViewHolder> {
     Context mContext;
     List<Event> mList;
     int[] colors = {0xffFFAD6C, 0xff62f434, 0xffdeda78, 0xff7EDCFF, 0xff58fdea, 0xfffdc75f};//颜色组
@@ -32,11 +31,11 @@ public class TimeLineAdapter2 extends RecyclerView.Adapter<TimeLineAdapter2.View
         mList = list;
     }
 
-    public TimeLineAdapter2(Context context) {
+    public DotTimeLineAdapter(Context context) {
         mContext = context;
     }
 
-    public TimeLineAdapter2(Context context, List<Event> list) {
+    public DotTimeLineAdapter(Context context, List<Event> list) {
         mContext = context;
         mList = list;
     }
@@ -52,12 +51,6 @@ public class TimeLineAdapter2 extends RecyclerView.Adapter<TimeLineAdapter2.View
         holder.time.setText(Util.LongtoStringFormat(1000 * mList.get(position).getTime()));
         holder.textView.setText(mList.get(position).getEvent());
         holder.time.setTextColor(colors[position % colors.length]);
-
-        if (position % 2 == 0) {
-            holder.itemView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.pop_left));
-        } else {
-            holder.itemView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.pop_right));
-        }
     }
 
     @Override
